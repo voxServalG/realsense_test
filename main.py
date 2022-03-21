@@ -22,12 +22,12 @@ if __name__ == '__main__':
     rs = RealsenseCamera()
     while True:
         ret, rgb_frame, depth_frame = rs.get_frame_stream()
-        cv2.imshow("dpeth frame", depth_frame)
+        cv2.imshow("depth frame", depth_frame)
         cv2.imshow("rgb frame", rgb_frame)
         # obtain current time for filenames
-        current_time = time.strftime('%Y%m%d%H%M%S')
+        current_time = time.strftime('%Y%m%d_%H%M%S') # 获取当前时间，精确到秒
 
-        print("Write depth data into txt? [y/others]")
+        print("Write depth data into txt? [y/others]") # 提示是否保存深度数据
         # 121 = 'y' in ASCII
         if cv2.waitKey(1000000) == 121:
             depth_output_file = 'depth_{}.txt'.format(current_time)
@@ -37,7 +37,7 @@ if __name__ == '__main__':
             print("Depth data saved as {}!".format(os.path.join(os.path.dirname(sys.argv[0]), depth_output_file)))
 
 
-        print("Save current RGB frame? [y/others]")
+        print("Save current RGB frame? [y/others]") # 提示是否保存当前图象
         if cv2.waitKey(1000000) == 121:
             # save current rgb frame as .jpeg
             frame_output_path = os.path.join(os.path.dirname(sys.argv[0]), 'rgb_{}.jpeg'.format(current_time))
