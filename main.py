@@ -6,7 +6,7 @@ import time
 
 
 def write_into_text(arr, dest):
-    with open(os.path.join(os.path.dirname(sys.argv[0]), dest), 'w', encoding='UTF-8') as f:
+    with open(os.path.join(os.path.dirname(sys.argv[0]), 'data', dest), 'w', encoding='UTF-8') as f:
         row = arr.shape[0]
         column = arr.shape[1]
         for i in range(row):
@@ -27,7 +27,7 @@ if __name__ == '__main__':
         # obtain current time for filenames
         current_time = time.strftime('%Y%m%d_%H%M%S') # 获取当前时间，精确到秒
 
-        print("Write depth data into txt? [y/others]") # 提示是否保存深度数据
+        print("Save current depth data and RGB frame? [y/others]") # 提示是否保存深度数据及rgb图象
         # 121 = 'y' in ASCII
         if cv2.waitKey(1000000) == 121:
             depth_output_file = 'depth_{}.txt'.format(current_time)
@@ -36,11 +36,8 @@ if __name__ == '__main__':
             # Notice when succeed
             print("Depth data saved as {}!".format(os.path.join(os.path.dirname(sys.argv[0]), depth_output_file)))
 
-
-        print("Save current RGB frame? [y/others]") # 提示是否保存当前图象
-        if cv2.waitKey(1000000) == 121:
             # save current rgb frame as .jpeg
-            frame_output_path = os.path.join(os.path.dirname(sys.argv[0]), 'rgb_{}.jpeg'.format(current_time))
+            frame_output_path = os.path.join(os.path.dirname(sys.argv[0]), 'data', 'rgb_{}.jpeg'.format(current_time))
             cv2.imwrite(frame_output_path, rgb_frame, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
             # notice when succeed
             print("Frame saved as {}!".format(frame_output_path))
