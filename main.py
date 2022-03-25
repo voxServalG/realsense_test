@@ -41,7 +41,3 @@ if __name__ == '__main__':
             cv2.imwrite(frame_output_path, rgb_frame, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
             # notice when succeed
             print("Frame saved as {}!".format(frame_output_path))
-
-            print("Exit? [esc/others]")
-            if cv2.waitKey(1000000) == 27:
-                break
