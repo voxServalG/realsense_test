@@ -3,7 +3,7 @@
 
 使用方法：
 
- 1. 运行
+ 1. 在终端运行
 ~~~
 pip install -r requirements.txt
 ~~~
