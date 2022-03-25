@@ -5,7 +5,7 @@ import sys
 import time
 
 
-# 将数组写入文本文件
+# 将数组arr写入位置dest
 def write_into_text(arr, dest):
     with open(os.path.join(os.path.dirname(sys.argv[0]), 'data', dest), 'w', encoding='UTF-8') as f:
         row = arr.shape[0]
