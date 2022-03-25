@@ -5,6 +5,7 @@ import sys
 import time
 
 
+# 将数组写入文本文件
 def write_into_text(arr, dest):
     with open(os.path.join(os.path.dirname(sys.argv[0]), 'data', dest), 'w', encoding='UTF-8') as f:
         row = arr.shape[0]
@@ -25,9 +26,9 @@ if __name__ == '__main__':
         cv2.imshow("depth frame", depth_frame)
         cv2.imshow("rgb frame", rgb_frame)
         # obtain current time for filenames
-        current_time = time.strftime('%Y%m%d_%H%M%S') # 获取当前时间，精确到秒
+        current_time = time.strftime('%Y%m%d_%H%M%S')  # 获取当前时间，精确到秒
 
-        print("Save current depth data and RGB frame? [y/others]") # 提示是否保存深度数据及rgb图象
+        print("Save current depth data and RGB frame? [y/others]")  # 提示是否保存深度数据及rgb图象
         # 121 = 'y' in ASCII
         if cv2.waitKey(1000000) == 121:
             depth_output_file = 'depth_{}.txt'.format(current_time)
