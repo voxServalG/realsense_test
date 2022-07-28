@@ -24,16 +24,18 @@ if __name__ == '__main__':
     while True:
         ret, rgb_frame, depth_frame = rs.get_frame_stream()
         cv2.imshow("depth frame", depth_frame)
-        cv2.imshow("rgb frame", rgb_frame)
+        cv2.imshow("rgb frame", rgb_frame)  # depth frame 和 rgb_frame是相機獲取到的一幀的rgb圖像和深度圖像，imshow将其以窗口形式展现
         # obtain current time for filenames
-        current_time = time.strftime('%Y%m%d_%H%M%S')  # 获取当前时间，精确到秒
+        current_time = time.strftime('%Y%m%d_%H%M%S')  # 获取当前时间，精确到秒，用于给文件命名
 
-        print("Save current depth data and RGB frame? [y/others]")  # 提示是否保存深度数据及rgb图象
+        print("Save current depth data and RGB frame? [y/others]")  # 获取两个图像后，提示是否保存深度数据及rgb图象
         # 121 = 'y' in ASCII
+        # （点一下rgb frame的窗口让他在最上方，然后按y就会进入下面的if代码）
+        # 如果按了其他，就会重新开始while段获取新的两帧图像）
         if cv2.waitKey(1000000) == 121:
             depth_output_file = 'depth_{}.txt'.format(current_time)
             # save depth as .txt
-            write_into_text(depth_frame, depth_output_file)
+            write_into_text(depth_frame, depth_output_file)  # 深度数据的本质还是1280*720的数组，这个方法将数组写到txt文件上
             # Notice when succeed
             print("Depth data saved as {}!".format(os.path.join(os.path.dirname(sys.argv[0]), depth_output_file)))
 

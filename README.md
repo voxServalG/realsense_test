@@ -1,13 +1,14 @@
 # realsense_test
-获取camera某一帧，并保存其rgb帧，将depth数据保存于txt文件。运行环境: python 3.9
+获取camera某一帧，并保存其rgb帧，将depth数据保存于txt文件。
+运行环境: python 3.9,需要的包见requirements.txt
 
 使用方法：
 
- 1. 运行
+ 1. 切换到你的python环境（建议用anaconda为每个项目配置独立的环境）或在代码路径下打开命令行，运行
 ~~~
 pip install -r requirements.txt
 ~~~
-安装相关package
+以安装相关package
 
  2. 连接相机，并运行
 ~~~
